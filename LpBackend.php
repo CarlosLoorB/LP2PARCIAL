@@ -2,7 +2,7 @@
 
 function postDenuncia($denunciaData) {
     // Firebase database endpoint
-    $firebaseEndpoint = "https://bd-lenguajesprog-default-rtdb.firebaseio.com/Denuncias.json";
+    $firebaseEndpoint = "https://lparcial2-default-rtdb.firebaseio.com/Denuncias.json";
 
     // Initialize cURL session
     $ch = curl_init();
@@ -39,12 +39,15 @@ function postDenuncia($denunciaData) {
         $denunciaData["desestimado"] = 0;
         $denunciaData["enTrabajo"] = 0;
         $denunciaData["solucionado"] = 0;
+        $denunciaData["activo"] = 1;
+        $denunciaData["estado"] = "Activo";
+        $denunciaData["voto"] = 0;
 
         // Convert data to JSON format
         $denunciaJson = json_encode($denunciaData);
 
         // Set cURL options for inserting data
-        curl_setopt($ch, CURLOPT_URL, "https://bd-lenguajesprog-default-rtdb.firebaseio.com/Denuncias.json");
+        curl_setopt($ch, CURLOPT_URL, "https://lparcial2-default-rtdb.firebaseio.com/Denuncias.json");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $denunciaJson);

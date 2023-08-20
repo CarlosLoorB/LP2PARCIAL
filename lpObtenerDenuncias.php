@@ -1,7 +1,7 @@
 <?php
 
 // Firebase database endpoint
-$firebaseEndpoint = "https://bd-lenguajesprog-default-rtdb.firebaseio.com/Denuncias.json";
+$firebaseEndpoint = "https://lparcial2-default-rtdb.firebaseio.com/Denuncias.json";
 
 // Initialize cURL session
 $ch = curl_init();
