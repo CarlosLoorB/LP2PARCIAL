@@ -1,5 +1,14 @@
 <?php
 
+// Habilitar CORS para permitir peticiones desde cualquier origen
+header("Access-Control-Allow-Origin: *");
+
+// Especificar los métodos HTTP permitidos para la solicitud
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+
+// Especificar los encabezados que se pueden incluir en la solicitud
+header("Access-Control-Allow-Headers: Content-Type");
+
 // Firebase database endpoint
 $firebaseEndpoint = "https://lparcial2-default-rtdb.firebaseio.com/Denuncias.json";
 

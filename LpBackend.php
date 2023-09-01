@@ -1,4 +1,12 @@
 <?php
+// Habilitar CORS para permitir peticiones desde cualquier origen
+header("Access-Control-Allow-Origin: *");
+
+// Especificar los métodos HTTP permitidos para la solicitud
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+
+// Especificar los encabezados que se pueden incluir en la solicitud
+header("Access-Control-Allow-Headers: Content-Type");
 
 function postDenuncia($denunciaData) {
     // Firebase database endpoint
@@ -58,7 +66,7 @@ function postDenuncia($denunciaData) {
         if (curl_errno($ch)) {
             echo "cURL Error: " . curl_error($ch);
         } else {
-            echo "Denuncia inserted successfully with ID: " . $newId;
+            echo json_encode("200");
         }
     }
 
@@ -74,11 +82,3 @@ $denunciaData = json_decode($jsonData, true);
 postDenuncia($denunciaData);
 
 ?>
-
-
- <!-- {
-    "descripcion": "Un bache en la calle tercera",
-    "fecha": "18/08/2023",
-    "nombre": "Primera denuncia",
-    "ubicacion": "Cdla Panorama Conj I"
-} -->
