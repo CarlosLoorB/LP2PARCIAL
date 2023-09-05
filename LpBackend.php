@@ -9,6 +9,12 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 function postDenuncia($denunciaData) {
+
+     if (empty($denunciaData["fecha"]) || empty($denunciaData["nombre"]) || empty($denunciaData["descripcion"]) || empty($denunciaData["ubicacion"])) {
+        echo json_encode("400");
+        echo json_encode("Los campos no pueden estar vacíos.");
+        return;
+    }
     // Firebase database endpoint
     $firebaseEndpoint = "https://lparcial2-default-rtdb.firebaseio.com/Denuncias.json";
 
