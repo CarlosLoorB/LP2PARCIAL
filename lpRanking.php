@@ -1,4 +1,11 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
+// Especificar los métodos HTTP permitidos para la solicitud
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+
+// Especificar los encabezados que se pueden incluir en la solicitud
+header("Access-Control-Allow-Headers: Content-Type");
 
 // Firebase database endpoint
 $firebaseEndpoint = "https://lparcial2-default-rtdb.firebaseio.com/Denuncias.json";
@@ -27,41 +34,9 @@ if (curl_errno($ch)) {
     // Take the top 10 entries
     $topRanking = array_slice($existingData, 0, 10);
 
-    // Print the ranking
-    echo "<style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        padding: 8px;
-        text-align: center;
-    }
-  </style>";
-
-    echo "<table>
-        <tr>
-            <th>Rank</th>
-            <th>Fecha</th>
-            <th>Nombre</th>
-            <th>Estado</th>
-            <th>Votos</th>
-        </tr>";
-
-    $rank = 1;
-
-    foreach ($topRanking as $entry) {
-        echo "<tr>
-                <td>{$rank}</td>
-                <td>{$entry['fecha']}</td>
-                <td>{$entry['nombre']}</td>
-                <td>{$entry['estado']}</td>
-                <td>{$entry['voto']}</td>
-            </tr>";
-        $rank++;
-    }
-
-    echo "</table>";
+    // Return the top ranking data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($topRanking); 
 
 }
 
